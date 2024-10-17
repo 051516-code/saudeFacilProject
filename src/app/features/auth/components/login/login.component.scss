@@ -1,0 +1,68 @@
+/* Estilos del contenedor de la pantalla de inicio de sesión */
+.login-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura completa de la pantalla */
+    width: 100vw;  /* Ancho completo de la pantalla */
+    text-align: center;
+    position: fixed; /* Fija el contenido en la ventana */
+    overflow: hidden; /* Oculta el desbordamiento */
+    background: rgba(55, 62, 96, 0.901); /* Fondo oscuro semi-transparente */
+}
+
+/* Estilos del logo de inicio de sesión */
+.login-logo {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto; /* Centra el logo */
+    animation: pulse 2s infinite; /* Añade la animación de pulso */
+}
+
+/* Animación de pulso para el logo */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Estilos compartidos entre el logo y el título */
+.login-logo, h1 {
+    font-weight: 600; /* Negrita */
+    color: #fff;      /* Color blanco */
+}
+
+/* Estilos de la tarjeta de inicio de sesión */
+.login-card {
+    max-width: 400px; /* Ancho máximo */
+    width: 90vw;      /* Ancho proporcional al viewport */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilos para los mensajes de error */
+.error-message {
+    color: red;        /* Texto en color rojo */
+    font-size: 0.9em;  /* Tamaño de texto más pequeño */
+    margin-top: 5px;   /* Margen superior */
+}
+
+/* Estilos del footer */
+.footer {
+    position: fixed;    /* Fijo en la parte inferior */
+    bottom: 0;
+    left: 0;
+    width: 100%;       /* Ancho completo */
+    height: 50px;      /* Altura del footer */
+    color: rgb(39, 36, 36); /* Color del texto */
+    text-align: center;     /* Texto centrado */
+    padding: 10px;      /* Relleno interno */
+    font-family: 'Roboto', sans-serif; /* Tipografía Roboto */
+}

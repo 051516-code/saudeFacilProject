@@ -1,14 +1,23 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
+import { APP_ROUTES } from './app-routes.constant';
+import { SplashComponent } from './shared/components/splash/splash.component';
+
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path : '',
+   component: SplashComponent
   },
   {
-    path: '',
-    redirectTo: 'home',
+    path : APP_ROUTES.AUTH,
+    loadChildren: () => import('./features/auth/auth.module').then( m => m.AuthModule)
+  },
+  
+  {
+    path: '**',
+    redirectTo: 'splash',
     pathMatch: 'full'
   },
 ];

@@ -1,0 +1,75 @@
+<ion-content>
+  <div class="login-content">
+    <img src="assets/images/logo.png" alt="logo" class="login-logo">
+    <h1>Saúde Fácil</h1>
+
+    <ion-card class="login-card">
+      <h3>Login</h3>
+      <ion-card-content>
+
+        <div class="login-form">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <ion-list lines="full" class="ion-margin-top">
+
+            <!-- Captura de CPF -->
+              <ion-item>
+                <ion-label position="floating" style="margin-bottom: 12px;">Informe seu CPF</ion-label>
+                <ion-input
+                  type="text"
+                  formControlName="cpf"
+                  (ionInput)="applyCpfMask($event)"
+                  placeholder="000.000.000-00">
+                </ion-input>
+              </ion-item>
+              <!-- Error Messages  -->
+              <ion-item *ngIf="loginForm.get('cpf')?.invalid && (loginForm.get('cpf')?.dirty || loginForm.get('cpf')?.touched)">
+                <ion-text color="danger" *ngIf="loginForm.get('cpf')?.hasError('required')">
+                  O cpf é obrigatório.
+                </ion-text>
+                <ion-text color="danger" *ngIf="loginForm.get('cpf')?.hasError('cpf')">
+                  Por favor escreva um cpf válido, use pontos e traços.
+                </ion-text>
+              </ion-item>
+
+              <!-- Data de Nascimento -->
+              <ion-item>
+                <ion-label position="floating" style="margin-bottom: 12px;">Informe sua data de nascimento</ion-label>
+                <ion-datetime-button datetime="datetime" style="margin-left: 100px;"></ion-datetime-button>
+
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime
+                      id="datetime"
+                      presentation="date"
+                      formControlName="birthDay"
+                      (ionChange)="onDateChange($event)"
+                    ></ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </ion-item>
+              <!-- Error Messages  -->
+              <div *ngIf="isFieldInvalid('birthDay')" class="error-message">
+                Fecha de nacimiento requerida.
+              </div>
+            </ion-list>
+            <!-- Botón de envío -->
+            <ion-button expand="block" type="submit" [disabled]="loginForm.invalid" class="ion-margin-top" color="primary">
+              Fazer Login
+            </ion-button>
+          </form>
+        </div>
+        <p (click)="goToRegister()">Criar Conta</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Loading -->
+  <app-loading [show]="isLoading"></app-loading>
+
+  <!-- footer  -->
+  <ion-footer class="footer">
+    <p>&copy; Drunk - Code</p>
+  </ion-footer>
+  
+
+</ion-content>
